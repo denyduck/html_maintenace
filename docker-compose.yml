@@ -1,0 +1,13 @@
+version: '3.5'
+
+services:
+  maintenance:
+    image: nginx:alpine
+    container_name: maintenance-page
+    build:
+      dockerfile: Dockerfile
+    volumes:
+      - ./maintenance.html:/usr/share/nginx/html/index.html:ro  # Připojení HTML jako index stránky
+    ports:
+      - "80:80"  # Mapování portu 80
+    restart: unless-stopped
