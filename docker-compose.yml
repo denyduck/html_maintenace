@@ -2,10 +2,10 @@ version: '3.5'
 
 services:
   maintenance:
-    image: nginx:alpine
-    container_name: maintenance-page
     build:
+      context: .  # Zde se očekává, že Dockerfile je ve stejném adresáři jako docker-compose.yml
       dockerfile: Dockerfile
+    container_name: maintenance-page
     volumes:
       - ./maintenance.html:/usr/share/nginx/html/index.html:ro  # Připojení HTML jako index stránky
     ports:
